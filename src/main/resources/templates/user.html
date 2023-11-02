@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row gy-1">
+        <div class="col">
+            <nav class="navbar navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <span class="nav-item">
+                        <span class="navbar-text" id="this-email" style="color: white; font-weight: bold; font-size: 1.5rem">USER'S EMAIL</span>
+                        <span class="navbar-text" style="color: white; font-weight: normal; font-size: 1.5rem">with roles:</span>
+                        <span class="navbar-text" id="this-roles" style="color: white; font-weight: normal; font-size: 1.5rem">USER'S ROLES</span>
+                    </span>
+                    <div class="navbar-nav">
+                        <a class="nav-link" href="/logout">Logout</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="row gy-2">
+            <div class="col-2">
+                <div class="row">
+                    <div class="col">
+                        <div class="nav flex-column nav-pills" id="vs-pills-tab" role="tablist" aria-orientation="vertical">
+                            <a class="nav-link" id="admin-button" href="/admin">Admin</a>
+                            <a class="nav-link active" href="/user">User</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-10">
+                <h1>User information-page</h1>
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                        <div class="card">
+                            <h4 class="card-header">About user</h4>
+                            <div class="card-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">First Name</th>
+                                        <th scope="col">Last Name</th>
+                                        <th scope="col">Age</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Role</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!--  Тут js вставит таблицу  -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="user.js"></script>
+</body>
+</html>
