@@ -18,7 +18,7 @@ public class UserDTO {
     private String username;
 
     private String password;
-/////////////////////////////////////////////////////////////
+
     @JsonIgnoreProperties("users")
     private List<String> rolesId;
 
@@ -30,7 +30,6 @@ public class UserDTO {
         this.rolesId = rolesId;
     }
 
-    /////////////////////////////////////////////////////
     public Long getId() {
         return id;
     }
@@ -77,6 +76,5 @@ public class UserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
 }

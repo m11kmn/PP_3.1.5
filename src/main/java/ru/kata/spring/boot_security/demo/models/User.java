@@ -39,8 +39,6 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-
-
     public User() {
 
     }
@@ -58,8 +56,6 @@ public class User implements UserDetails {
             this.roles = new HashSet<>();
         }
         this.roles.add(role);
-
-
     }
 
     public Long getId() {
@@ -115,12 +111,6 @@ public class User implements UserDetails {
                 .map(x -> x.getAuthority().replace("ROLE_", ""))
                 .collect(Collectors.joining(" "));
     }
-
-
-
-    ////////////////////////////////////////
-    // Методы интерфейса UserDetails
-    ////////////////////////////////////////
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

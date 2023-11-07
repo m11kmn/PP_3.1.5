@@ -1,5 +1,5 @@
 async function getAllUsers() {
-    let response = await fetch('http://localhost:8080/admin/js');
+    let response = await fetch('http://localhost:8080/admin/show');
     return await response.json();
 }
 
@@ -28,8 +28,6 @@ function showAllUsers() {
             $('tbody').append(newRow);
         }
         $('button[name="edit-button"], button[name="delete-button"]').on('click', function() {
-            console.log(editUser)
-            console.log(deleteUser)
             getAllUsers().then(users => {
                 for (let user of users) {
                     if (user.id === parseInt(this.id)) {
@@ -62,13 +60,12 @@ newUserForm.change(function () {
     newUser.username = newUserForm.find('input[name="email"]').val();
     newUser.password = newUserForm.find('input[name="password"]').val();
     newUser.rolesId = newUserForm.find('select[name="rolesId"]').val();
-    console.log(newUser);
 })
 $('#add-new-user').on('click', async function (){
     const headers = {
         'Content-Type': 'application/json'
     }
-    let response = await fetch('http://localhost:8080/admin/js', {
+    let response = await fetch('http://localhost:8080/admin/create', {
         method: 'POST',
         body: JSON.stringify(newUser),
         headers: headers
@@ -87,13 +84,12 @@ editUserForm.change(function () {
     editUser.username = editUserForm.find('input[name="email"]').val();
     editUser.password = editUserForm.find('input[name="password"]').val();
     editUser.rolesId = editUserForm.find('select[name="rolesId"]').val();
-    console.log(editUser);
 })
 $('#edit-user').on('click', async function (){
     const headers = {
         'Content-Type': 'application/json'
     }
-    let response = await fetch('http://localhost:8080/admin/js', {
+    let response = await fetch('http://localhost:8080/admin/update', {
         method: 'PUT',
         body: JSON.stringify(editUser),
         headers: headers
@@ -107,7 +103,7 @@ $('#delete-user').on('click', async function (){
     const headers = {
         'Content-Type': 'application/json'
     }
-    let response = await fetch('http://localhost:8080/admin/js', {
+    let response = await fetch('http://localhost:8080/admin/delete', {
         method: 'DELETE',
         body: JSON.stringify(deleteUser),
         headers: headers

@@ -1,5 +1,5 @@
 (async function showAllUsers() {
-    let response = await fetch('http://localhost:8080/user/js');
+    let response = await fetch('http://localhost:8080/user/show');
     let user = await response.json();
     $('#this-email').text(user.username)
     $('#this-roles').text(user.rolesId.map(x => x.replace('ROLE_', '')).toString().replace(',', ' '))

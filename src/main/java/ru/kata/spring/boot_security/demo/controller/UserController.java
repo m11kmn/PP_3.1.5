@@ -11,41 +11,25 @@ import ru.kata.spring.boot_security.demo.dto.UserDTO;
 import ru.kata.spring.boot_security.demo.models.Role;
 import ru.kata.spring.boot_security.demo.models.User;
 import ru.kata.spring.boot_security.demo.services.UserService;
+import ru.kata.spring.boot_security.demo.utils.ConverterDTO;
 
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
-	private final UserService userService;
-	private final ModelMapper modelMapper;
+
+	private final ConverterDTO converterDTO;
 
 	@Autowired
-	public UserController(UserService userService, ModelMapper modelMapper) {
-		this.userService = userService;
-		this.modelMapper = modelMapper;
-	}
+	public UserController(ConverterDTO converterDTO) {this.converterDTO = converterDTO;}
 
-//	@GetMapping
-//	public String showUserInfo(){
-//		return "user";
-//	}
-
-	@CrossOrigin
-	@ResponseBody
-	@GetMapping("/js")
+	@GetMapping("/show")
 	public UserDTO getUser(){
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		return convertToUserDTO(user);
-	}
-
-	private UserDTO convertToUserDTO(User user) {
-		UserDTO userDTO = modelMapper.map(user, UserDTO.class);
-		List<String> roles = user.getRoles().stream().map(Role::getAuthority).collect(Collectors.toList());
-		userDTO.setRolesId(roles);
-		return userDTO;
+		return converterDTO.convertToUserDTO(user);
 	}
 }
